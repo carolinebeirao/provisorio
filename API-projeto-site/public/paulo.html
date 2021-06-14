@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/usuario.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"
+        integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title id="titulo_pagina">USUARIO</title>
+</head>
+
+<body onload="obterPublicacoes()">
+    <!-- SCRIPT DAS FUNÇÕES JS -->
+    <script type="text/javascript" src="./funcoes.js"></script>
+    <!-- DIV DO MENU ESQUERDO DO FEED-->
+    <div id="left_1">
+        <div id="painel_publicacao">
+            <img src="./imagens/usuario/painel-publicitario 1.svg" onclick="aparecer_feed()" alt="">
+            <h3 style="display: none;">FEED DE RECEITAS</h3>
+        </div>
+        <div id="perfil_usuario">
+            <img src="./imagens/usuario/perfil-de-usuario 1.svg" onclick="aparecer_perfil()" alt="">
+        </div>
+        <div id="logout">
+            <img src="./imagens/usuario/logout 1.svg" onclick="logoff()" alt="">
+        </div>
+    </div>
+    <!-- DIV DO CONTEUDO DIREITO DO FEED-->
+    <div id="rigth_feed" style="display: block;">
+        <div id="div_topo">
+            <div id="div_logo">
+                <img src="./imagens/usuario/image 2.svg" alt="">
+            </div>
+            <div id="div_logo_publicacao">
+                <img src="./imagens/usuario/livro-de-receitas 1.svg" alt="">
+            </div>
+        </div>
+        <div id="div_restante">
+            <div id="div_buttons">
+                <button onclick="ocultar()" id="btn_ocultar">OCULTAR FORMULARIO</button>
+                <button onclick="aparecer()" id="btn_aparecer" style="display: none;">VISUALIZAR FORMULARIO</button>
+                <button onclick="grafico()">VISUALIZAR GRAFICO</button>
+                <button onclick="receitas()">VISUALIZAR RECEITAS</button>
+            </div>
+
+            <form id="form_publicar" method="post" onsubmit="return publicar()">
+                <div id="div_tipo_receita">
+                    <h3>SELECIONE UMA OPÇÃO</h3>
+                    <select name="tipoReceita" type="text" class="box">
+                        <option hidden>-- SELECIONE --</option>
+                        <option value="SALGADO">SALGADO</option>
+                        <option value="DOCE">DOCE</option>
+                        <option value="AGRIDOCE">AGRIDOCE</option>
+                    </select>
+                </div>
+                <div id="div_titlo_receita">
+                    <h3>TITULO DA RECEITA</h3>
+                    <input id="tituloReceita" name="tituloReceita">
+                </div>
+                <div id="div_ingredientes_receita">
+                    <h3>INGREDIENTES</h3>
+                    <input id="ingredientesReceita" name="ingredientes">
+                </div>
+                <div id="div_conteudo_receita">
+                    <h3>CONTEUDO DA RECEITA</h3>
+                    <textarea id="mododepreparo" class="textarea-padrao" style="resize: none;"
+                        name="receita"></textarea>
+                </div>
+                <div id="div_button">
+                    <button id="btn_publicar">PUBLICAR</button>
+
+                </div>
+            </form>
+            <div class="extra" id="div_error">
+                <div id="div_erro" class="msg_erro">
+                </div>
+                <img src="aguarde-orange.gif" style="display: none;" id="img_aguarde">
+            </div>
+
+        </div>
+        <div class="feed" id="div_fedd_pagina">
+            <div id="div_titulo_pagina">
+                <h1>Publicações</h1>
+                <div id="divBusca">
+                    <input type="text" id="txtBusca" placeholder="Buscar..." />
+                    <img src="./imagens/usuario/lupa.png" id="btnBusca" alt="Buscar" />
+                </div>
+            </div>
+            <div id="div_qtdreceitas">
+                <div id="infodoce">
+                    <H3>DOCE</H3>
+                </div>
+                <div id="infosalgado">
+                    <H3>SALGADO</H3>
+                </div>
+                <div id="infoagridoce">
+                    <H3>AGRIDOCE</H3>
+                </div>
+            </div>
+            <div id="div_topicos">
+                <div id="div_doce">
+
+                    <!-- <h3>DOCE</h3> -->
+                </div>
+                <div id="div_salgado">
+                    <!-- <h3>SALGADO</h3> -->
+
+                </div>
+                <div id="div_agridoce">
+                    <!-- <h3>AGRIDOCE</h3> -->
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- DIV DO MENU ESQUERDO DO PERFIL-->
+    <div id="left_1" style="display: none;">
+        <div id="painel_publicacao">
+            <img src="./imagens/usuario/painel-publicitario 1.svg" onclick="aparecer_feed()" alt="">
+        </div>
+        <div id="perfil_usuario">
+            <img src="./imagens/usuario/perfil-de-usuario 1.svg" onclick="aparecer_perfil()" alt="">
+        </div>
+        <div id="logout">
+            <img src="./imagens/usuario/logout 1.svg" onclick="logoff()" alt="">
+        </div>
+    </div>
+    <!-- DIV DO CONTEUDO DIREITO DO PERFIL -->
+    <div id="rigth_perfil" style="display: none;">
+        <div id="div_foto">
+            <img id="perfil_outros" src="./imagens/usuario/perfil_outros.svg" alt="" style="display: none;">
+            <img id="perfil_masculino" src="./imagens/usuario/perfil_masculino.svg" alt="" style="display: none;">
+            <img id="perfil_feminino" src="./imagens/usuario/perfil_feminino.svg" alt="" style="display: none; ">
+
+        </div>
+        <div id="div_nome">
+            <h4>Nome</h4>
+            <div id="nome"><b id="b_nome"></b></div>
+        </div>
+        <div id="div_email">
+            <h4>E-mail</h4>
+            <div id="email"><b id="b_email"></b></div>
+        </div>
+        <div id="div_data_sexo">
+            <div id="data_sexo">
+                <h4>Data Nacimento</h4>
+                <h4>Sexo</h4>
+            </div>
+            <div id="data_sexo_escrito">
+                <div id="dataNasc">
+                    <b id="b_dataNasc">
+
+                    </b>
+                </div>
+                <div id="sexo">
+                    <b id="b_sexo">
+
+                    </b>
+                </div>
+            </div>
+            <div id="div_logo_perfil">
+                <img src="./imagens/login/logo.png" alt="">
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    verificar_autenticacao();
+
+    var sexo_perfil = document.getElementById('b_sexo').innerHTML;
+
+    if (sexo_perfil == 'MASCULINO') {
+        perfil_masculino.style.display = 'block'
+    } else if (sexo_perfil == 'FEMININO') {
+        perfil_feminino.style.display = 'block'
+    } else if(sexo_perfil == 'OUTROS'){
+        perfil_outros.style.display = 'block'
+    }
+
+    function ocultar() {
+        form_publicar.style.display = 'none'
+        btn_ocultar.style.display = 'none'
+        div_error.style.display = 'none'
+        div_fedd_pagina.style.marginTop = '0px';
+        div_restante.style.height = "auto"
+        btn_aparecer.style.display = 'block'
+    }
+
+    function aparecer() {
+        form_publicar.style.display = 'block'
+        btn_aparecer.style.display = 'none'
+        btn_ocultar.style.display = 'block'
+        div_error.style.display = 'block'
+    }
+
+    function grafico() {
+        window.location.href = 'grafico.html';
+    }
+
+    function receitas() {
+        window.location.href = "#div_fedd_pagina"
+    }
+
+
+
+
+    function publicar() {
+        console.log("entrei!")
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_publicar));
+        var idUsuario = sessionStorage.id_usuario_meuapp;
+        fetch(`/publicacoes/publicar/${idUsuario}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                obterPublicacoes();
+
+                finalizarAguardar();
+            } else {
+                console.log('Erro ao publicar!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+
+    function atualizarFeed(publicacoes) {
+
+        var doce = document.getElementById("div_doce");
+        doce.innerHTML = "";
+        var salgado = document.getElementById("div_salgado");
+        salgado.innerHTML = "";
+        var agridoce = document.getElementById("div_agridoce");
+        agridoce.innerHTML = "";
+
+        for (let i = 0; i < publicacoes.length; i++) {
+            var publicacao = publicacoes[i];
+
+            var divPublicacao = document.createElement("div")
+            var divTipo = document.createElement("div")
+            var divNome = document.createElement("div")
+            var divTitulor = document.createElement("div")
+            var divIngredientes = document.createElement("div")
+            var divDescricao = document.createElement("div")
+
+            divNome.innerHTML = `${publicacao.nome}:`;
+            divTitulor.innerHTML = publicacao.tituloReceita;
+            divIngredientes.innerHTML = `<h4>INGREDIENTES:</h4>  ${publicacao.ingredientes}`;
+            divDescricao.innerHTML = `<h3>MODO DE PREPARO:</h3> ${publicacao.receita}`;
+
+            if (publicacao.tipoReceita == "DOCE") {
+
+                divPublicacao.className = "publicacao"
+                divTitulor.className = "tituloReceita"
+                divIngredientes.className = "Ingredientes"
+                divNome.className = "nome";
+                divDescricao.className = "descricao";
+
+                divPublicacao.appendChild(divNome);
+                divPublicacao.appendChild(divTitulor);
+                divPublicacao.appendChild(divIngredientes);
+                divPublicacao.appendChild(divDescricao);
+
+
+                doce.appendChild(divPublicacao);
+                // onload="grafico()" 
+                onload = "obterPublicacoes()"
+                // break
+            } else if (publicacao.tipoReceita == "SALGADO") {
+
+
+                divPublicacao.className = "publicacao"
+                divTipo.className = "tipoReceita"
+                divTitulor.className = "tituloReceita"
+                divIngredientes.className = "Ingredientes"
+                divNome.className = "nome";
+                divDescricao.className = "descricao";
+
+                divPublicacao.appendChild(divNome);
+                divPublicacao.appendChild(divTipo);
+                divPublicacao.appendChild(divTitulor);
+                divPublicacao.appendChild(divIngredientes);
+                divPublicacao.appendChild(divDescricao);
+
+                salgado.appendChild(divPublicacao);
+                // onload="grafico()" 
+                onload = "obterPublicacoes()"
+                // break
+            } else if (publicacao.tipoReceita == "AGRIDOCE") {
+
+
+                divPublicacao.className = "publicacao"
+                divTitulor.className = "tituloReceita"
+                divIngredientes.className = "Ingredientes"
+                divNome.className = "nome";
+                divDescricao.className = "descricao";
+
+                divPublicacao.appendChild(divNome);
+                divPublicacao.appendChild(divTitulor);
+                divPublicacao.appendChild(divIngredientes);
+                divPublicacao.appendChild(divDescricao);
+
+
+                agridoce.appendChild(divPublicacao);
+                // onload="grafico()" 
+                onload = "obterPublicacoes()"
+                // break
+            }
+
+
+        }
+
+    }
+
+    function obterPublicacoes() {
+        aguardar();
+        fetch("/publicacoes")
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        tituloReceita.value = '';
+                        ingredientesReceita.value = '';
+                        mododepreparo.value = '';
+
+                        atualizarFeed(resposta);
+
+
+
+                        // atualizargrafico()
+
+                        finalizarAguardar();
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações: ${error.message}`);
+            });
+    }
+
+    function obterPublicacoesPorUsuario(idUsuario) {
+        fetch(`/publicacoes/${idUsuario}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // alert(JSON.stringify(resposta))
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+            });
+    }
+
+    function aguardar() {
+        btn_publicar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizarAguardar(resposta) {
+        btn_publicar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        if (resposta) {
+            div_erro.style.visibility = 'visible';
+            div_erro.innerHTML = resposta;
+        }
+    }
+</script> -->
+
+<script>
+    function aparecer_perfil() {
+        rigth_perfil.style.display = 'block'
+        rigth_feed.style.display = 'none'
+        left.style.display = 'none'
+        left_1.style.display = 'block'
+        if (document.title != 'Feed de Receitas') {
+            document.title = 'Perfil do Usuario';
+        }
+    }
+
+    function aparecer_feed() {
+        rigth_perfil.style.display = 'none'
+        rigth_feed.style.display = 'block'
+        left_1.style.display = 'none'
+        left.style.display = 'block'
+
+
+    }
+</script>

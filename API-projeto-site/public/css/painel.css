@@ -1,0 +1,263 @@
+body {
+    background-color: #E5E5E5;
+    margin: 5px;
+}
+
+#P1 {
+    background-image: linear-gradient(to bottom right, #FFFFFF 50%, #fdc81880 50%);
+    height: 700px;
+
+}
+
+/* INICIO HAMNURGUER */
+
+.cabecalho_servico h1 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(131, 95, 165);
+    font-size: 40px;
+    margin-top: 0;
+    padding-top: 70px;
+}
+
+
+.cabeçalho {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 40px;
+}
+
+#check {
+    display: none;
+    position: fixed;
+}
+
+#icone {
+    background-color: none;
+    cursor: pointer;
+    padding: 15px;
+    position: fixed;
+    z-index: 1;
+}
+
+.barra {
+    background-color: rgba(99, 94, 94, 0.94);
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    transition: all .2s linear;
+    left: -300px;
+    margin: 0;
+    margin-top: -10px;
+    text-align: center;
+}
+
+#barranav button{
+    margin-top: 40px;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    cursor: pointer;
+}
+
+#barranav button:hover{
+    background-color: rgb(104, 102, 99);
+}
+
+nav {
+    width: 100%;
+    position: absolute;
+    top: 140px;
+    transition: 0.4s;
+    flex-direction: row;
+}
+
+nav a {
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.15s all ease-in-out;
+    box-sizing: border-box;
+    flex-direction: row;
+
+}
+
+.link {
+    color: #f4f4f9;
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    transition: all .2s linear;
+    /* border-bottom: 2px solid rgba(51, 51, 51, 0.527); */
+    opacity: 0;
+    margin-top: 200px;
+}
+
+.link:hover {
+    background-color: #ffd000;
+    color: black;
+}
+
+#check:checked~.barra {
+    transform: translateX(300px);
+}
+
+#check:checked~.barra nav a .link {
+    opacity: 1;
+    margin-top: 0;
+    transition-delay: .2s;
+}
+
+/* CABEÇALHO DO SITE */
+
+.cabecalho {
+    /* background-color: blue; */
+    height: 70px;
+}
+
+.logo {
+    /* background-color: red; */
+    width: 400px;
+    margin-left: 450px;
+}
+
+.logo img {
+    margin-top: 15px;
+    width: 400px;
+}
+
+/* CONTEUDO DO SITE */
+
+
+.conteudo {
+    /* background-color: blueviolet; */
+    height: 500px;
+}
+
+.div_barras {
+    display: flex;
+    /* background-color: white; */
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.barra01 {
+    background-color: #C4C4C4;
+    width: 580px;
+    height: 15px;
+    margin-top: 10px;
+
+}
+
+.barra02 {
+    background-color: #C4C4C4;
+    width: 600px;
+    height: 15px;
+    margin-top: 10px;
+}
+
+.div_barras h3 {
+    font-size: 20px;
+    margin-top: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info{
+    /* background-color: red; */
+    margin-left: 40px;
+    margin-right: 64px;
+}
+
+.info H4{
+    color: blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#lista01{
+    display: flex;
+    background-color: rgba(179, 8, 183, 1);
+    margin-left: 40px;
+    margin-right: 64px;
+    height: 30px;
+    margin-bottom: 11px;
+}
+
+#lista01 h5{
+    margin-block: 0;
+    margin-top: 6px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.id_paciente{
+    margin-left: 20px;
+}
+
+.nome_paciente{
+    margin-left: 130px
+}
+
+.dataNasc_paciente{
+    margin-left: 330px;
+}
+
+#lista01 button{
+    margin-top: 5px;
+    margin-left: 100px;
+    border-width: 0px;
+    border-style: groove;
+    border-color: black;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+#lista01 button:hover{
+    background-color: rgb(122, 121, 119);
+}
+
+
+
+#lista02{
+    display: flex;
+    background-color: rgba(254, 244, 0, 1);
+    margin-left: 40px;
+    margin-right: 64px;
+    height: 30px;
+    margin-bottom: 11px;
+}
+
+#lista02 h5{
+    margin-block: 0;
+    margin-top: 6px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.id_paciente{
+    margin-left: 20px;
+}
+
+.nome_paciente{
+    margin-left: 130px
+}
+
+.dataNasc_paciente{
+    margin-left: 330px;
+}
+
+#lista02 button{
+    margin-top: 5px;
+    margin-left: 100px;
+    border-width: 0px;
+    border-style: groove;
+    border-color: black;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+#lista02 button:hover{
+    background-color: rgb(122, 121, 119);
+}

@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: verdana;
+
+}
+
+a {
+    text-decoration: none ;
+}
+
+
+#pelicula {
+    background-color: rgba(0, 0, 0, 0.507);
+    width: 100%;
+    height: 100%;
+}
+
+#container-geral {
+    background-color: aqua;
+    height: 625px;
+    display: flex;
+}
+
+#lateral-foto{
+    background-image: url(../imagens/cadastro/cadastro.png);
+    width: 40%;
+    
+}
+
+#lateral-botao {
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    padding-top: 130px ;
+    text-align: center; 
+    
+}
+
+#caixa-conteudotexto {
+    /* background-color: rgb(241, 177, 177); */
+    margin: 20px auto;
+    width: 50%;
+    height: 70px;
+    color: slategray;
+}
+
+#caixa-conteudo {
+    background-color: #FDC818;
+    margin: 20px auto;
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+#caixa-conteudo2 {
+    background-color: rgb(216, 129, 233);
+    margin: 20px auto;
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+.seta {
+    position: fixed;
+    margin: 20px;
+}
+
+.seta img{
+    width: 40px;
+}

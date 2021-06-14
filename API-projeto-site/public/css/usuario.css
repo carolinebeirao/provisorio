@@ -1,0 +1,264 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(197, 197, 197, 0.808) ;
+    margin: 30px;
+    color: black;
+}
+
+
+
+#container-geral {
+    /* background-color: violet; */
+    height: 620px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+#navg {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 80px;
+    border-radius: 25px  25px 0px  0px;
+
+}
+.foto{
+    padding: 8px;
+    margin: 0 auto;
+    background-color: white;
+    width: 80%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* border-style: groove; */
+    /* border-width: 1px; */
+    /* border-color: black; */
+    border-radius: 10px;
+    /* margin-left: 10px; */
+}
+
+.foto img{
+    width: 147px;
+}
+
+#info {
+   padding: 6px; 
+}
+
+#apresentacao {
+    background-color: rgb(255, 255, 255);
+    height:490px;
+    width: 100%;
+    display: flex;
+    border-radius: 0px 0px 20px 20px;
+}
+
+#menu_lateral {
+    background-color: white;
+    width: 20%;
+    padding: 16px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+#conteudo_dash {
+    background-color: rgb(241, 241, 241);
+    width: 80%;
+    display: flex;
+    border-radius: 20px 0px 20px 0px;
+}
+
+#blocos {
+    background-color: rgb(241, 241, 241);
+    width: 30%;
+    border-radius: 20px 0px 0px 0px;
+    margin: 10px 0px;
+}
+
+
+
+.logo h1 {
+    padding-left: 20px;
+    color: rgb(201, 108, 255);
+}
+
+.logo img {
+    /* background-color: yellowgreen; */
+    padding: 15px 30px 0 0 ;
+}
+
+#caixa1 {
+    background-color: rgb(248, 117, 117);
+    margin: 10px auto;
+    width: 85%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    border-radius: 10px 0px 0px 10px;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+#caixa1:hover {
+    background-color: rgb(255, 74, 74);
+}
+
+#caixa2 {
+    background-color: rgb(157, 255, 132);
+    margin: 10px auto;
+    width: 85%;
+    height: 100px;
+    border-radius: 10px 0px 0px 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+#caixa2:hover {
+    background-color: rgb(118, 255, 83);
+}
+
+
+#caixa3 {
+    background-color: rgb(255, 247, 140);
+    margin: 10px auto;
+    width: 85%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    border-radius: 10px 0px 0px 10px;
+    font-size: 18px;
+}
+
+#caixa3:hover {
+    background-color: rgb(255, 243, 73);
+}
+
+
+#grafic {
+    /* background-color: yellowgreen; */
+    margin: 10px auto;
+    width: 68%;
+    height: 100%;
+}
+
+#dash-grafic{
+    background-color: rgb(255, 255, 255);
+    width: 95%;
+    height: 390px;
+    padding: 10px;
+    border-radius: 0px 10px 10px 0px ;
+    margin-top: 10px;
+}
+
+#desc-dash {
+    background-color: rgb(255, 255, 255);
+    width: 95%;
+    height: 140px;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px ;
+}
+
+#desconectar{
+    background-color: rgb(196, 137, 207);
+    border-radius: 10px;
+    padding:5px ;
+    height: 25px;
+    margin-right: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#desconectar:hover{
+    font-size: 18px;
+    background-color: rgb(195, 0, 255);
+}
+
+
+#colorful {
+    color:  rgb(131, 95, 165);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+#disp input{
+    margin-top: 2px;
+    background-color: rgb(223, 223, 223);
+    color:white;
+    height: 25px;
+    border: 0px solid ;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#disp button{
+    margin-top: 2px;
+    background-color: black;
+    color:white;
+    height: 35px;
+    border: 0px solid ;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#disp button:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+#disp {
+    margin-top: 40px;
+}
+
+#end button{
+    border-radius: 40px;
+    border: none;
+    height: 30px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+#end button:hover{
+    background-color: white;
+    color: black;
+}
+
+#div_endereco{
+    /* background-color: red; */
+    width: 100%;
+    height: 70%;
+}
+
+#divendereco{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#form_cadastro p{
+    text-align: center;
+    /* background-color: blue; */
+    margin-block-end: 0;
+    margin-block-start: 0;
+}
+#form_cadastro input{
+    margin-left: 41%;
+    width: 250px;
+    height: 25px;
+    border: none;
+    border-radius: 20px;
+}
+#form_cadastro button{
+    margin: 0;
+    margin-left: 47%;
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+}

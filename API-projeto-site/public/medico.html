@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/medico.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="funcoes2.js"></script>
+
+    <style>
+        /* Classes CSS para exemplos de alertas */
+
+        .normal {
+            background-color: white;
+        }
+
+        .alerta-alto {
+            color: tomato;
+
+        }
+
+        .alerta-baixo {
+            color: rgb(38, 0, 255);
+
+        }
+    </style>
+    <title>Médico</title>
+</head>
+
+<body onload="atualizacaoPeriodica(), visualizar()">
+    <!-- NAVEGAÇÃO -->
+    <div id="caixasuspensa">
+
+
+        <div id="navegacao">
+            <div id="colorful">
+                COLORFUL LIFE
+            </div>
+            <div id="desconectar" onclick="logoff()">DESCONECTAR</div>
+            
+        </div>
+        <div id="caixa-principal">
+            <!-- LATERAL ESQUERDA  -->
+            <!-- PERFIL DO MEDICO -->
+            <div id="perfil">
+                <div id="dadosmedico">
+                    <div id="logout-usuario">
+                        <img src="./imagens/medico/meidco.png" alt="">
+                        <div id="b_usuario"> <b> NOME:</b><span id="nome_b"></span></div>
+                        <div id="b_usuario"><b>  ESPECIALIDADE:</b><span id="espec_b"></span></div>
+                        <div id="b_usuario"><b>  CRM: </b><span id="crm_b"></span></div>
+
+    
+                    </div>
+                   
+                </div>
+                <div id="pacientecaixa">
+                    <div id="pacientetitulo">
+                        <b> SELECIONAR PACIENTE</b>   
+                    </div>
+                    
+                    <div id="paciente">
+                       <p> Reyel Soares</p>
+                        <button onclick="visualizar(), fkPaciente = 1"> visualizar</button>
+                    </div>
+                    
+                    <div id="paciente">
+                       <p>Gustavo Quaresma</p> 
+
+                        <button onclick="visualizar(), fkPaciente = 2"> visualizar</button>
+                    </div>
+                    
+                    <div id="paciente">
+                        <p>Bruno Zapateiro</p> 
+                        <button onclick="visualizar(), fkPaciente = 3"> visualizar</button>
+                    </div>
+                    
+                    <div id="paciente">
+                       <p> Pedro Herique</p>
+
+                        <button onclick="visualizar(), fkPaciente = 4"> visualizar</button>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+            <div id="painel-principal">
+                <div id="subtopo">
+
+                   
+
+                    <div id="pac-visualisar2">
+                        <div id="info-pac">
+
+
+
+                        </div>
+
+                        <div id="msg_critico">
+
+                        </div>
+                    </div>
+
+                    
+
+                    <div id="pac-visualisar3">
+                        <div id="info-pac">
+
+
+                        </div>
+
+                        <div id="msg_critico2">
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div id="topo">
+
+
+                    <div id="dash">
+                        <b>TEMPERATURA EM TEMPO REAL</b> 
+                        <br><br>
+                        <div style="width: 550px; height: 350px;">
+                            <canvas id="myChart1"></canvas>
+
+                        </div>
+                    </div>
+                    <div id="dash2">
+                        <div id="info_paciente"></div>
+                        <div id="pac-visualisar1">
+                            <div id="info-pac">
+    
+                            </div>
+    
+                            <div id="alerta">
+    
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+<script>
+
+    var fkPaciente = 0;
+
+    var hora = [];
+    var dado = [];
+    verificar_autenticacao();
+
+
+    function visualizar() {
+
+        // aguardar();
+        fetch(`/leituras/qualquernome/${fkPaciente}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        info_paciente.innerHTML = `<b>Nome:</b> ${resposta.nome}<br> <b>Sexo:</b> ${resposta.sexo}<br> <b>Grau Autismo:</b> ${resposta.grauAutismo}<br> 
+                        <b>Hora:</b> ${resposta.momento_grafico}<br>
+                        <b>Temperatura:</b> ${resposta.temperatura}<br>`;
+
+
+
+
+                        // Gráfico
+
+                        dado.push(resposta.temperatura)
+                        hora.push(resposta.momento_grafico)
+                        var ctx = document.getElementById('myChart1');
+                        var meuGrafico = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: [hora[hora.length - 1], hora[hora
+                                    .length - 2], hora[hora.length - 3],
+                                hora[hora.length - 4], hora[hora
+                                    .length - 5]
+                                ],
+                                datasets: [{
+                                    label: "",
+                                    data: [dado[dado.length - 1], dado[
+                                        dado.length - 2], dado[dado
+                                            .length - 3], dado[dado.length -
+                                            4], dado[dado.length - 5]],
+                                    backgroundColor: 'transparent',
+                                    borderColor: '#000000',
+                                    pointBorderWidth: 5,
+                                    tension: 0.5
+                                },]
+                            },
+                            options: {
+                                title: {
+                                    display: false,
+                                    fontSize: 20,
+                                    text: "Temperatura atual"   
+                                },
+                                legend: {
+                                    display: false,
+                                    reverse: false,                      
+                                },
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: false,
+                                            suggestedMin: 34,
+                                            suggestedMax: 42
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        // Fim do gráfico
+
+                        if (resposta.temperatura >= 37.5) {
+                            alerta.innerHTML = `<b><span style="color:red;">Temperatura muito alta, possível começo de crise!</span> <br><br>
+                         ${resposta.temperatura} </b>
+                        `; classList.add('alerta-alto')
+                        };
+
+
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do paciente p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+
+    function maxTemp() {
+        // aguardar();
+        fetch(`/leituras/estatisticas`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        
+                        msg_critico.innerHTML = `<div id="info-pac">
+                        <div>
+                             Nome: <b>${resposta.nome}</b>
+                        </div>
+                        </div>
+                        <br><span style="font-size:25px;">temperatura<br><b>${resposta.temp_maxima}</b></span>
+               
+              `;
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do paciente p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function minTemp() {
+        // aguardar();
+        fetch(`/leituras/estatisticas2`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        msg_critico2.innerHTML = `<div id="info-pac">
+                        <div>
+                             Nome: <b>${resposta.nome}</b>
+                        </div>
+                        </div>
+                        <br><span style="font-size:25px;">temperatura<br><b>${resposta.temp_min}</b></span>
+               
+              `;
+
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do paciente p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+
+
+    //   let usuario;
+
+
+    // só mexer se quiser alterar o tempo de atualização
+    // ou se souber o que está fazendo!
+    function atualizacaoPeriodica() {
+        maxTemp(),
+            minTemp(),
+            visualizar(),
+            setTimeout(atualizacaoPeriodica, 5000);
+        setTimeout(() => {
+            sendData();
+        }, 5000);
+    }
+
+
+
+    // function obterdadosporpaciente(idPaciente) {
+    //     //aguardar();
+    //     fetch(`/leituras/tempo-real/${idPaciente}`)
+    //     .then(resposta => {
+
+    //         if (resposta.ok) {
+    //             resposta.json().then(function (resposta) {
+
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+    //                 // aqui, após registro. use os nomes 
+    //                 // dos atributos que vem no JSON 
+    //                 var dados = {
+    //                     temperatura: resposta.temperatura
+
+    //                 }
+
+    //                 alertar(resposta.temperatura, idPaciente);
+    //                 atualizarTela(dados, idPaciente);
+    //             });
+    //         } else {
+
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //     .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados do paciente p/ gráfico: ${error.message}`);
+    //         });
+    // }
+
+    // function alertar(temperatura, idPaciente) {
+    //     // padrão para meu alerta
+    //     var limites = {
+    //         max_temperatura: 40,
+    //         min_temperatura: 20,
+
+    //     };
+
+    //     // zerar aviso de mensagem
+    //     var mensagem_temperatura = '';
+    //     var classe_temperatura = 'alerta';
+
+
+    //     // comparando
+    //     if (temperatura > limites.max_temperatura) {
+    //         mensagem_temperatura += 'Temperatura alta demais! <br>';
+    //         classe_temperatura = 'alerta alerta-alto';
+    //     }
+
+    //     if (temperatura < limites.min_temperatura) {
+    //         mensagem_temperatura = 'Temperatura baixa demais! <br>';
+    //         classe_temperatura = 'alerta alerta-baixo';
+    //     }
+
+
+    //     // escolhendo qual alterar
+    //     var div_temperatura_alterar
+
+
+    //     if (idPaciente == 1) {
+    //         div_temperatura_alterar = div_alerta_temperatura
+
+    //     } else if (idPaciente == 2) {
+    //         div_temperatura_alterar = div_alerta_temperatura2
+
+    //     } else if (idPaciente == 3) {
+    //         div_temperatura_alterar = div_alerta_temperatura3
+
+    //     } else if (idPaciente == 4) {
+    //         div_temperatura_alterar = div_alerta_temperatura4
+
+    //     }
+
+    //     // alterando
+    //     div_temperatura_alterar.innerHTML = mensagem_temperatura;
+    //     div_temperatura_alterar.className = classe_temperatura;
+
+
+    // }
+
+    // // só altere aqui se souber o que está fazendo!
+    // function atualizarTela(dados, idPacinete) {
+    //     console.log('iniciando atualização da tela...');
+
+    //     // escolhendo qual alterar
+    //     var div_temperatura_alterar
+
+
+    //     if (idPaciente == 1) {
+    //         div_temperatura_alterar = div_temperatura
+
+    //     } else if (idPaciente == 2) {
+    //         div_temperatura_alterar = div_temperatura2
+
+    //     } else if (idPaciente == 3) {
+    //         div_temperatura_alterar = div_temperatura3
+
+    //     } else if (idPaciente == 4) {
+    //         div_temperatura_alterar = div_temperatura4
+
+    //     }
+
+    //     div_temperatura_alterar.innerHTML = `Temperatura: ${dados.temperatura}º`;
+
+
+
+
+
+    // }
+
+
+    function sendData() {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:9001/api/sendData', false);
+        http.send(null);
+    }
+
+// Descomente abaixo se quiser inserir dados a cada X segundos  
+
+
+
+</script>

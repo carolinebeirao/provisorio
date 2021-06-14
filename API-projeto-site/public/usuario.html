@@ -1,0 +1,436 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Meu Perfil</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    
+
+    <script type="text/javascript" src="./funcoes.js"></script>
+    <link rel="stylesheet" href="./css/usuario.css">
+    <style>
+        /* canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		} */
+    </style>
+</head>
+
+<body onload="atualizacaoPeriodica()">
+   
+    <div id="container-geral">
+        <div id="navg">
+            <div class="logo" style="display: flex; justify-content: space-between;">
+                <h1  id="colorful" >ColorFulLife</h1>
+                <div id="desconectar" onclick="logoff()" >DESCONECTAR</div>
+             </div>
+        </div>
+        <div id="div_endereco" style="display: none;">
+            <div id="divendereco">
+                <h2>CADASTRAR ENDEREÇO</h2>
+            </div>
+            <div id="divcadastro" >
+                <form id="form_publicar" method="post" onsubmit="return publicar()" >
+                         <p class="campo">Estado:</p>
+                        <input name="estado" type="text" class="input_cadastro_parte3" placeholder="Estado">
+
+                        <p class="campo">Cidade:</p>
+                        <input name="cidade" type="text" class="input_cadastro_parte3" placeholder="Cidade">
+
+                        <p class="campo">CEP:</p>
+                        <input name="cep" type="text" class="input_cadastro_parte3" placeholder="CEP">
+
+                        <p class="campo">Bairro:</p>
+                        <input name="bairro" type="text" class="input_cadastro_parte3" placeholder="Bairro">
+
+                        <p class="campo">Rua:</p>
+                        <input name="rua" type="text" class="input_cadastro_parte3" placeholder="Rua">
+
+                        <p class="campo">Número:</p>
+                        <input name="numero" type="text" class="input_cadastro_parte3" placeholder="Número">
+
+                        <p class="campo">Complemento:</p>
+                        <input name="complemento" type="text" class="input_cadastro_parte3" placeholder="Complemento"> <br>
+                    
+                    <button type="submit" id="btn_entrar" class="btn_padrao"><b>Cadastrar</b></button>
+                </form>
+                <div class="extra">
+                    <div id="div_erro" class="msg_erro">
+                    </div>
+                    <img src="aguarde-orange.gif" id="img_aguarde" style="display: none;"> 
+                </div>
+            </div>
+        </div>
+        <div id="apresentacao">
+            <div id="menu_lateral">
+                <div class="foto">
+                    <img id="foto_perfilm" src="./imagens/usuario/mulher.png" alt="" style="display: none;">
+                    <img id="foto_perfilh" src="./imagens/usuario/homem.png" alt="" style="display: none;">
+                </div>
+                <div class="info">
+                    <!-- <h4>INFORMAÇÃO DO USUARIO</h4> -->
+
+                    <b>NOME:</b> <span id="b_usuario"></span>
+                    <br><br>
+                    <b>NACIMENTO:</b> <span id="b_data"></span>
+                    <br><br>
+                    <b>SEXO:</b> <span id="b_sexo"> </span>
+                    <br><br>
+                    <b>GRAU DE AUTISMO: </b><span id="grau"></span>
+                </div>
+                <div id="end">
+                    <br>
+                    <button onclick="cadastrar()">INFORMAR ENDEREÇO</button>
+                    
+                </div>
+                <div id="disp">
+                    <br>
+                   <b> CADASTRAR DISPOSITIVO</b>
+                   <br><br>
+                   <input name="dispositivo" type="number" placeholder="digite o código aqui">
+                   <button id="disp">cadastrar</button>
+                </div>
+            </div>
+            <div id="conteudo_dash">
+                <div id="blocos">
+                    <div id="caixa1">
+                        <div style="display:flex; justify-content: space-between;">
+                            <p> <b> MÁXIMA</b>
+                                </p>
+                            <p>.</p>
+                        </div>
+                        <div id="temperatura_max">
+                            
+                        </div>
+
+                    </div>
+                    <div id="caixa2">
+                        <div style="display:flex; justify-content: space-between;">
+                            <p> <b> MÉDIA</b>
+                            <p>.</p>
+                        </div>
+                        <div id="temperatura_med">
+                            
+                        </div>
+                    </div>
+                    <div id="caixa3">
+                        <div style="display:flex; justify-content: space-between;">
+                            <p> <b> BAIXA</b>
+                            <p>.</p>
+                        </div>
+                        <div id="temperatura_min">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div id="grafic">
+                    <div id="dash-grafic">
+                        <br>
+                        <b> MEDIÇÃO EM TEMPO REAL</b>
+                        <br><br>
+                        <!-- CANVAS DO GRAFICO -->
+                        <div class="codigo_grafico">
+
+                            <div id="caixa-temp">
+                                <!-- <h1>Sensor LM35</h1> -->
+                                <section id="medias-temp">
+                                    <!-- <h2>temperatura média: <label id='average'>0.00</label></h2> -->
+                                    <!-- <h2>Média Hora: <label id='averageHour'>0.00</label></h2> -->
+                                </section>
+                                <section style="width:650px; height: 500px;">
+                                    <canvas  id="myChart1"></canvas>
+                                    <section>
+                            </div>
+                            <div style="display: none;">
+                                <section>
+                                    <h1>Sensor DHT11 - Umidade</h1>
+                                    <h2>Média: <label id='averageHumidity'>0.00</label></h2>
+                                    <h2>Média Hora: <label id='averageHourHumidity'>0.00</label></h2>
+                                </section>
+                                <section style="width:100%">
+                                    <canvas id="chart-humidity"></canvas>
+                                    <section>
+                            </div>
+                            <div style="display: none;">
+                                <section>
+                                    <h1>Sensor TRC5000 - Switch</h1>
+                                </section>
+                                <section style="width:100%">
+                                    <canvas id="chart-switch"></canvas>
+                                    <section>
+                            </div>
+                            <div style="display: none;">
+                                <section>
+                                    <h1>Sensor LDR - Luminosidade</h1>
+                                    <h2>Média: <label id='averageLumi'>0.00</label></h2>
+                                    <h2>Média Hora: <label id='averageHourLumi'>0.00</label></h2>
+                                </section>
+                                <section style="width:100%">
+                                    <canvas id="chart-lumi"></canvas>
+                                    <section>
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+
+            </div>
+        </div>
+        
+        </div>
+   
+</div>
+
+</body>
+<script>
+
+    var hora = [];
+    var dado = [];
+    var fkPaciente = Number(sessionStorage.idPaciente_meuapp);
+    var idPaciente = fkPaciente;
+
+    function cadastrar() {
+        menu_lateral.style.display = 'none'
+        conteudo_dash.style.display = 'none'
+        div_endereco.style.display = 'block'
+        apresentacao.style.display = 'none'
+    }
+
+    function publicar() {
+        console.log("entrei!")
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_publicar));
+        var idUsuario = sessionStorage.id_usuario_meuapp;
+        fetch(`/publicacoes/publicar/${idUsuario}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                obterPublicacoes();
+
+                finalizarAguardar();
+            } else {
+                console.log('Erro ao publicar!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_publicar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+
+    // verificar_autenticacao();
+
+//     function visualizar() {
+//     // aguardar();
+//     fetch(`/leituras/qualquernome/${fkPaciente}`)
+//     .then(resposta => {
+
+//         if (resposta.ok) {
+//             resposta.json().then(function (resposta) {
+
+//                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);               
+
+                
+                
+
+//                 // Gráfico
+
+//                         dado.push(resposta.temperatura)
+//                         hora.push(resposta.momento_grafico)
+//                         var ctx = document.getElementById('myChart1');
+//                         var meuGrafico = new Chart(ctx, {
+//                             type: 'line',
+//                             data: {
+//                                 labels: [hora[hora.length - 1], hora[hora
+//                                         .length - 2], hora[hora.length - 3],
+//                                     hora[hora.length - 4], hora[hora
+//                                         .length - 5]
+//                                 ],
+//                                 datasets: [{
+//                                     label: "Temperatura",
+//                                     data: [dado[dado.length - 1], dado[
+//                                         dado.length - 2], dado[dado
+//                                         .length - 3], dado[dado.length -
+//                                         4], dado[dado.length - 5]],
+//                                         backgroundColor: 'transparent',
+//                                     borderColor: '#000000',
+//                                     pointBorderWidth: 5,
+//                                     tension: 0.5
+//                                 }, ]
+//                             },
+//                             options: {
+//                                 title: {
+//                                     display: false,
+//                                     fontSize: 20,
+//                                     text: "Temperatura",
+//                                     position: 'top',
+//                                 },
+//                                 legend: {
+//                                     display: false,
+//                                     reverse: false,
+//                                     position: 'top'
+//                                 },
+//                                 scales: {
+//                                     yAxes: [{
+//                                         ticks: {
+//                                             beginAtZero: false,
+//                                             suggestedMin: 34,        
+//                                             suggestedMax: 42
+//                                         }
+//                                     }]
+//                                 }
+//                             }
+//                         });
+//                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+//                         // Fim do gráfico
+
+//                         if(resposta.temperatura >= 37.5){
+//                         alerta.innerHTML = `Temperatura muito alta, possível começo de crise! <br>
+//                         ${resposta.nome} ${resposta.temperatura}
+//                         `; classList.add('alerta-alto') 
+// };
+               
+
+                
+//             });
+//         } else {
+
+//             console.error('Nenhum dado encontrado ou erro na API');
+//         }
+//     })
+//     .catch(function (error) {
+//             console.error(`Erro na obtenção dos dados do paciente p/ gráfico: ${error.message}`);
+//         });
+// }
+
+
+// function maxTemp() {
+
+//     // aguardar();
+//     fetch(`/leituras/estatisticas4/${idPaciente}`)
+//     .then(resposta => {
+
+//         if (resposta.ok) {
+//             resposta.json().then(function (resposta) {
+
+//                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+//                 temperatura_max.innerHTML = ` Temperatura: ${resposta.temp_max}`; 
+
+                
+//                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+               
+
+                
+//             });
+//         } else {
+
+//             console.error('Nenhum dado encontrado ou erro na API');
+//         }
+//     })
+//     .catch(function (error) {
+//             console.error(`Erro na obtenção dos dados do paciente p/ gráfico: ${error.message}`);
+//         });
+// }
+
+// function minTemp() {
+//     // aguardar();
+//     fetch(`/leituras/estatisticas3/${idPaciente}`)
+//     .then(resposta => {
+
+//         if (resposta.ok) {
+//             resposta.json().then(function (resposta) {
+
+//                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+//                 temperatura_min.innerHTML = ` Temperatura: ${resposta.temp_min}`; 
+
+                
+//                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+               
+
+                
+//             });
+//         } else {
+
+//             console.error('Nenhum dado encontrado ou erro na API');
+//         }
+//     })
+//     .catch(function (error) {
+//             console.error(`Erro na obtenção dos dados do paciente p/ gráfico: ${error.message}`);
+//         });
+        
+// }
+
+// function medTemp() {
+//     // aguardar();
+//     fetch(`/leituras/estatisticas5/${idPaciente}`)
+//     .then(resposta => {
+
+//         if (resposta.ok) {
+//             resposta.json().then(function (resposta) {
+
+//                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+//                 temperatura_med.innerHTML = `Temperatura: ${((resposta.temp_med).toFixed(2))}`; 
+
+                
+//                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+               
+
+                
+//             });
+//         } else {
+
+//             console.error('Nenhum dado encontrado ou erro na API');
+//         }
+//     })
+//     .catch(function (error) {
+//             console.error(`Erro na obtenção dos dados do paciente p/ gráfico: ${error.message}`);
+//         });
+        
+// }
+
+
+// function atualizacaoPeriodica() {
+//     maxTemp(),
+//     minTemp(),
+//     medTemp(),
+//     visualizar(),
+//     setTimeout(atualizacaoPeriodica, 5000);
+//     setTimeout(() => {
+//     sendData();
+// }, 5000);
+// }
+
+
+// function sendData() {
+//     var http = new XMLHttpRequest();
+//     http.open('GET', 'http://localhost:9001/api/sendData', false);
+//     http.send(null);
+// }
+
+
+
+
+</script>
+
+</html>
+
+
+
+
+
+
+

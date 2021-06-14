@@ -1,0 +1,488 @@
+body {
+    background-color: #E5E5E5;
+    margin: 5px;
+}
+
+#P1 {
+    background-image: linear-gradient(to bottom right, #FFFFFF 50%, #fdc81880 50%);
+    height: 700px;
+
+}
+
+/* INICIO HAMNURGUER */
+
+.cabecalho_servico h1 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(131, 95, 165);
+    font-size: 40px;
+    margin-top: 0;
+    padding-top: 70px;
+}
+
+
+.cabeçalho {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 40px;
+}
+
+#check {
+    display: none;
+    position: fixed;
+}
+
+#icone {
+    background-color: none;
+    cursor: pointer;
+    padding: 15px;
+    position: fixed;
+    z-index: 1;
+}
+
+.barra {
+    background-color: rgba(99, 94, 94, 0.94);
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    transition: all .2s linear;
+    left: -300px;
+    margin: 0;
+    margin-top: -10px;
+    text-align: center;
+}
+
+#barranav button{
+    margin-top: 40px;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    cursor: pointer;
+}
+
+#barranav button:hover{
+    background-color: rgb(104, 102, 99);
+}
+
+nav {
+    width: 100%;
+    position: absolute;
+    top: 140px;
+    transition: 0.4s;
+    flex-direction: row;
+}
+
+nav a {
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.15s all ease-in-out;
+    box-sizing: border-box;
+    flex-direction: row;
+
+}
+
+.link {
+    color: #f4f4f9;
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    transition: all .2s linear;
+    /* border-bottom: 2px solid rgba(51, 51, 51, 0.527); */
+    opacity: 0;
+    margin-top: 200px;
+}
+
+.link:hover {
+    background-color: #ffd000;
+    color: black;
+}
+
+#check:checked~.barra {
+    transform: translateX(300px);
+}
+
+#check:checked~.barra nav a .link {
+    opacity: 1;
+    margin-top: 0;
+    transition-delay: .2s;
+}
+
+/* CABEÇALHO DO SITE */
+
+.cabecalho {
+    /* background-color: blue; */
+    height: 70px;
+}
+
+.logo {
+    /* background-color: red; */
+    width: 400px;
+    margin-left: 450px;
+}
+
+.logo img {
+    margin-top: 15px;
+    width: 400px;
+}
+
+/* CONTEUDO DO SITE */
+
+.conteudo {
+    /* background-color: blueviolet; */
+    height: 500px;
+}
+
+.div_barras {
+    display: flex;
+    /* background-color: white; */
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.barra01 {
+    background-color: #C4C4C4;
+    width: 580px;
+    height: 15px;
+    margin-top: 10px;
+
+}
+
+.barra02 {
+    background-color: #C4C4C4;
+    width: 600px;
+    height: 15px;
+    margin-top: 10px;
+}
+
+.div_barras h3 {
+    font-size: 20px;
+    margin-top: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.bordas {
+    border-radius: 5px;
+    width: 170px;
+    height: 170px;
+    background-color: black;
+    margin-left: 570px;
+
+}
+
+.bordas img {
+    border-radius: 5px;
+    width: 170px;
+    height: 170px;
+
+}
+
+.info_medico {
+    /* background-color: blue; */
+    height: 70px;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.usu_nome {
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    margin-left: 500px;
+    margin-right: 510px;
+    height: 20px;
+    width: 300px;
+    text-align: center;
+    padding-bottom: 15px;
+    background-color: #CCC9C9;
+}
+
+.usu_nome h5 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-top: 7px;
+    color: red;
+
+}
+
+.usu_nome_text h5 {
+    margin-left: 640px;
+    margin-block-end: 0;
+    margin-block-start: 0%;
+}
+
+
+
+#sub_info_caixa {
+    display: flex;
+}
+
+#sub_info_caixa h5 {
+    color: red;
+    margin-top: 7px;
+}
+
+#subcaixa_text {
+    /* background-color: red; */
+    display: flex;
+    height: 19px;
+}
+
+#subcaixa_text h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+#text_profis {
+    margin-left: 220px;
+}
+
+#text_datanasc {
+    margin-left: 310px;
+}
+
+#text_crm {
+    margin-left: 355px;
+}
+
+.usu_profissao {
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    /* background-color: yellow; */
+    width: 200px;
+    margin-left: 115px;
+    text-align: center;
+    height: 30px;
+    width: 300px;
+    background-color: #CCC9C9;
+
+}
+
+.usu_profissao h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.usu_CRM {
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    /* background-color: white; */
+    width: 100px;
+    margin-left: 100px;
+    text-align: center;
+    height: 30px;
+    width: 300px;
+    background-color: #CCC9C9;
+}
+
+.usu_CRM h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.usu_DataNasc {
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    /* background-color: blue; */
+    width: 200px;
+    margin-left: 100px;
+    text-align: center;
+    height: 30px;
+    width: 300px;
+    background-color: #CCC9C9;
+}
+
+.usu_DataNasc h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.div_barras02 {
+    display: flex;
+    /* background-color: white; */
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+.barra03 {
+    background-color: #C4C4C4;
+    width: 580px;
+    height: 15px;
+    margin-top: 22px;
+
+}
+
+.barra04 {
+    background-color: #C4C4C4;
+    width: 600px;
+    height: 15px;
+    margin-top: 22px;
+}
+
+.div_barras2 h3 {
+    font-size: 20px;
+    margin-top: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+#subcaixa_endereco {
+    display: flex;
+}
+
+#subcaixa_endereco h5 {
+    margin-top: 7px;
+}
+
+
+#subcaixa_titulos {
+    /* background-color: red; */
+    width: 100%;
+    height: 14px;
+    display: flex;
+    margin-bottom: 0%;
+}
+
+#subcaixa_titulos h5 {
+    margin-block-end: 0%;
+    margin-block-start: 0%;
+
+}
+
+
+#text_cep {
+    margin-left: 60px;
+}
+
+#text_endereco {
+    margin-left: 170px;
+}
+
+#text_numero {
+    margin-left: 320px;
+}
+
+#text_bairro {
+    margin-left: 75px;
+}
+
+#text_estado {
+    margin-left: 140px;
+}
+
+#text_cidade {
+    margin-left: 140px;
+}
+
+.usu_CEP {
+    /* background-color: yellow; */
+    margin-left: 60px;
+    width: 150px;
+    height: 30px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    background-color: #CCC9C9;
+}
+
+.usu_CEP h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: red;
+}
+
+.usu_endereco {
+    /* background-color: blue; */
+    margin-left: 40px;
+    width: 350px;
+    height: 30px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    background-color: #CCC9C9;
+}
+
+.usu_endereco h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: red;
+}
+
+.usu_numero {
+    /* background-color: red; */
+    margin-left: 40px;
+    width: 50px;
+    height: 30px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    background-color: #CCC9C9;
+}
+
+.usu_numero h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: red;
+
+}
+
+.usu_bairro {
+    /* background-color: green; */
+    margin-left: 40px;
+    width: 150px;
+    height: 30px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    background-color: #CCC9C9;
+}
+
+.usu_bairro h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: red;
+}
+
+.usu_estado {
+    /* background-color: cyan; */
+    margin-left: 40px;
+    width: 150px;
+    height: 30px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    background-color: #CCC9C9;
+}
+
+.usu_estado h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: red;
+}
+
+.usu_cidade {
+    /* background-color: pink; */
+    margin-left: 40px;
+    width: 150px;
+    height: 30px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    background-color: #CCC9C9;
+}
+
+.usu_cidade h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: red;
+}

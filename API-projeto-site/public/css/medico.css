@@ -1,0 +1,255 @@
+body{
+    margin: 0;
+    font-family: Verdana ;
+    color: rgb(0, 0, 0);
+    background-color: #c9c9c9 ; 
+
+}
+
+#caixasuspensa {
+    background-color: rgb(255, 255, 255);
+    margin: 25px;
+    border-radius: 25px;
+}
+
+
+#navegacao {
+    /* background-color: #99040496 ; */
+    height: 60px;
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+#caixa-principal {
+    background-color: rgba(139, 139, 139, 0);
+    height: 570px;
+    width: auto;
+    display: flex;
+}
+
+#perfil{
+    /* background-color: rgba(185, 65, 65, 0.692); */
+    height: 570px;
+    width: 25%;
+    text-align: center;
+    
+}
+
+#painel-principal{
+    background-color: rgba(231, 231, 231, 0.397);
+    height: 100%;
+    width: auto;
+    width: 80%;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#desconectar{
+    background-color: rgb(196, 137, 207);
+    border-radius: 10px;
+    padding:5px ;
+    height: 25px;
+    margin-right: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#desconectar:hover{
+    font-size: 18px;
+    background-color: rgb(195, 0, 255);
+}
+
+
+#dadosmedico {
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: 83%;
+    margin: 10px;
+    padding: 10px;
+    text-align: left;
+    border-radius: 15px;
+}
+
+#colorful {
+    color:  rgb(131, 95, 165);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+/* #logout-usuario  {
+    display: flex;
+} */
+
+#logout-usuario img {
+    width: 40px;
+    /* margin-right: 10px; */
+}
+
+#logout {
+    padding-top: 16px;
+}
+
+#b_usuario {
+    padding-top: 18px;
+    margin-right: 20px;
+}
+
+#topo {
+    /* background-color: rgb(105, 88, 163); */
+    height: 58%;
+    width: 100%;
+    margin: 10px;
+    display: flex;
+
+
+}
+
+#subtopo {
+    /* background-color: rgb(207, 18, 18); */
+    height: 30%;
+    width: 98%;
+    margin: 10px;
+    display: flex;   
+    border-radius: 10px;
+}
+
+#pacientecaixa {
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: 90%;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+#paciente {
+    background-color: rgb(231, 231, 231);
+    height: 30px;
+    margin: 8px;
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#paciente:hover {
+    background-color: rgb(180, 180, 180);
+}
+
+#paciente button{
+    margin-top: 2px;
+    background-color: black;
+    color:white;
+    height: 25px;
+    border: 0px solid ;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#paciente button:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+
+#paciente p{
+    margin: 0;
+    margin-top: 5px;
+}
+
+#pacientetitulo {
+    text-align: left;
+    color: rgb(0, 0, 0);
+    margin: 8px;
+    margin-top: 50px;
+   
+}
+
+#dash {
+    background-color: rgb(230, 230, 230);
+    width: 60%;
+    padding: 20px;
+    text-align: left;
+    border-radius: 10px;
+    margin-left: 14px;  
+}
+#dash2 {
+    background-color: rgba(230, 230, 230, 0.678);
+    width: 28%;
+    padding: 8px;
+    margin-left: 20px;
+    text-align: left;
+    border-radius: 10px;
+}
+
+#pac-visualisar1 {
+    background-color: rgba(255, 255, 255, 0);
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    height: 90px;
+    font-size: 15px;
+}
+
+#pac-visualisar2 {
+    background-color: rgba(255, 7, 7, 0.699);
+    width: 50%;
+    margin: 10px;
+    text-align: center;
+    padding-top: 10PX;
+    border-radius: 10px;
+}
+
+#pac-visualisar2:hover {
+    background-color: rgba(255, 7, 7, 0.897);
+    cursor: pointer;
+}
+
+#pac-visualisar3 {
+    background-color: rgb(254, 255, 190);
+    width: 50%;
+    margin: 10px;
+    text-align: center;
+    padding-top: 10PX;
+    border-radius: 10px;
+}
+
+#pac-visualisar3:hover {
+    background-color: rgb(253, 255, 136);
+    cursor: pointer;
+}
+
+#info-pac {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+}
+
+
+#msg-critico {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+
+hr{
+    border-color:rgb(251, 228, 255);
+}
+
+#info_paciente{
+   /* background-color: aqua; */
+   padding: 10px 10px 10px 20px;
+   
+
+
+}
